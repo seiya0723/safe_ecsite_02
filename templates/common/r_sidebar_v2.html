@@ -1,0 +1,36 @@
+{% extends "common/base.html" %}
+{% load static %}
+
+{% block page_title %}{% endblock %}
+{% block head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'common/css/r_sidebar_v2.css' %}">
+<script src="{% static 'common/js/r_sidebar_v2.js' %}"></script>
+<link rel="stylesheet" href="{% static 'common/css/fontawesome/all.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<header>
+    <div class="header">
+        <h1>{% block header_title %}{% endblock %}</h1>
+    </div>
+    <input id="r_sidebar" class="r_sidebar_button" type="checkbox">
+    <label class="r_sidebar_label" for="r_sidebar"></label>
+    <a class="r_sidebar_home" href="{% url 'shopping:index' %}"><i class="fas fa-home"></i></a>
+
+    <div class="r_sidebar_menu">
+        {% block sidebar_content %}{% endblock %} 
+    </div>
+    <div id="r_sidebar_closer" class="r_sidebar_closer"></div>
+
+</header>
+
+{% block main  %}{% endblock %}
+
+{% endblock %}
+
+
+
+
+

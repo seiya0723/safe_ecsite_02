@@ -1,0 +1,64 @@
+/* l_sidebar overwrite css */
+.left_header {
+    background:mediumblue;
+}
+
+body {
+    background:snow;
+    color:black;
+
+}
+ 
+
+.right_alignment {
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
+
+    display:flex;
+    margin-right:0.25rem;
+}
+.icon_header {
+    display:block;
+    width:3rem;
+    height:3rem;
+
+    position:relative;
+    border:solid 0.2rem white;
+    border-radius:0.5rem;
+
+    cursor:pointer;
+    margin-left:0.5rem;
+
+}
+.icon_header i {
+    position:absolute;
+    top:calc(50% - 0.5rem);
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:1.5rem;
+}
+.icon_header .fa-shopping-cart {
+    color:orange;
+}
+.icon_header .fa-lock {
+    color:gold;
+}
+.icon_name {
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:0.75rem;
+    font-weight:bold;
+    color:white;
+}
+
+
+@media(max-width:768px){
+    .input_search {
+        display:none
+    }
+}
+

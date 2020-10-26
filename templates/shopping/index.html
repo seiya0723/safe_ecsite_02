@@ -1,0 +1,61 @@
+{% extends "common/l_sidebar.html" %}
+
+{% load static %}
+{% load humanize %}
+
+
+{% block page_title %}Safe EC Site{% endblock %}
+{% block head %}
+{{ block.super }}
+<script src="{% static 'common/js/ajax.js' %}"></script>
+
+
+<link rel="stylesheet" href="{% static 'shopping/css/style.css' %}">
+{% endblock %}
+
+{% block header_title %}Safe EC site{% endblock %}
+{% block left_header_content %}
+<!--ここにフォームから継承してレンダリングさせる-->
+<div class="right_alignment">
+    <form method="GET">
+        {{ search_form.search_word }}
+    </form>
+    <a class="icon_header" href="" ><i class="fas fa-shopping-cart"></i><div class="icon_name">cart</div></a>
+    <a class="icon_header" href="{% url 'account_login' %}" ><i class="fas fa-lock"></i><div class="icon_name">login</div></a>
+</div>
+{% endblock %}
+
+
+{% block sidebar_content %}
+<!--TODO:ここにカテゴリやサイズなどによる絞り込み機能を実装させる。-->
+{% endblock %}
+
+
+{% block main %}
+<main class="container">
+
+    <!--この辺の変数はsettings.pyで定義した、django.contrib.authの中に含まれている。-->
+    {% if user.is_authenticated %}
+    <div style="font-size:1.2rem;">いらっしゃいませ {{ user.get_username }} さん <a href="{% url 'account_logout' %}" style="color:blue;">ログアウトする</a></div>
+    {% elif user.is_anonymous %}
+    <div style="font-size:1.2rem;">ようこそ ゲスト さん</div>
+    {% endif %}
+
+
+
+
+{% if search_result %}
+<p>{{ search_result|length }}件ヒットしました。</p>
+{% endif %}
+
+{% for content in search_result %}
+<p>{{ content.name }} |  {{ content.category }}| {{ content.price|intcomma }}円</p>
+{% endfor %}
+
+
+<!--TODO:トップページであれば、おすすめ商品の一覧を表示させたり、セールのバナーを表示させる。-->
+
+</main>
+{% endblock %}
+
+

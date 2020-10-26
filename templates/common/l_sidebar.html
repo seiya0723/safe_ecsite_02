@@ -1,0 +1,40 @@
+{% extends "common/base.html" %}
+{% load static %}
+
+{% block page_title %}{% endblock %}
+{% block head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'common/css/l_sidebar.css' %}">
+<script src="{% static 'common/js/l_sidebar.js' %}"></script>
+<link rel="stylesheet" href="{% static 'common/css/fontawesome/all.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<header>
+
+    <input id="l_sidebar" class="l_sidebar_button" type="checkbox">
+    <div class="left_header">
+        <label class="l_sidebar_label" for="l_sidebar">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+        </label>
+        <a class="header_link" href="{% url 'shopping:index' %}"><h1>{% block header_title %}{% endblock %}</h1></a>
+        {% block left_header_content %}
+        {% endblock %}
+    </div>
+
+    <div class="l_sidebar_menu">
+        {% block sidebar_content %}{% endblock %} 
+    </div>
+
+    <div id="l_sidebar_closer" class="l_sidebar_closer"></div>
+
+</header>
+{% block main  %}{% endblock %}
+
+{% endblock %}
+
+
+
+
