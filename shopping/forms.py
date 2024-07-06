@@ -1,7 +1,10 @@
+# == This code was created by https://noauto-nolife.com/post/django-auto-create-models-forms-admin/ == #
+
 from django import forms
+from .models import Product
 
-
-#検索用バリデーションはモデルを継承せずにフォームを作る
-class SearchForm(forms.Form):
-    search_word = forms.CharField(widget=forms.TextInput(attrs={"class":"input_search"}))
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model	= Product
+        fields	= [ "name", "price" ]
 
